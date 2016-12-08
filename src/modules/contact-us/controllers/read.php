@@ -2,18 +2,21 @@
 /**
  * Read page
  */
+
+/**
+ * @namespace
+ */
 namespace Application;
 
-use Bluz\Proxy\Request;
+use Bluz\Controller\Controller;
 
 return
     /**
      * @param int $id
      */
-    function($id) use ($view, $module, $controller) {
+    function ($id) {
         /**
-         * @var Bootstrap $this
-         * @var View $view
+         * @var Controller $this
          */
         $row = ContactUs\Table::findRow(['id' => $id]);
         if (empty($row)) {
@@ -23,5 +26,5 @@ return
             $row->mark_read = 1;
             $row->save();
         }
-        $view->row = $row;
+        $this->assign('row', $row);
     };

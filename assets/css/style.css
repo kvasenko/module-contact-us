@@ -1,0 +1,8 @@
+@font-face {
+    font-family: captcha;
+    src: url(../../fonts/contact-us/Static.ttf);
+}
+.captcha {
+    font-family: captcha;
+    font-size: 35px;
+}

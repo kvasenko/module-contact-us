@@ -2,21 +2,26 @@
 /**
  * Reply page
  */
+
+/**
+ * @namespace
+ */
 namespace Application;
 
 use Bluz\Proxy\Messages;
 use Bluz\Proxy\Request;
 use Bluz\Proxy\Mailer;
+use Bluz\Controller\Controller;
+use Bluz\Proxy\Response;
 
 return
     /**
      * @param int $id
      * @param string $message
      */
-    function($id, $message) use ($view) {
+    function ($id, $message) {
         /**
-         * @var Bootstrap $this
-         * @var View $view
+         * @var Controller $this
          */
         $row = ContactUs\Table::findRow(['id' => $id]);
         if (empty($row)) {
@@ -32,13 +37,13 @@ return
                 $row->mark_answered = 1;
                 $row->save();
                 Messages::addSuccess('Message was successfully sent to ' . $row['email']);
-                $this->redirectTo('contact-us', 'grid');
+                Response::redirectTo('contact-us', 'grid');
             }
         } else {
             if ($row->mark_read == 0) {
                 $row->mark_read = 1;
                 $row->save();
             }
-            $view->row = $row;
+            $this->assign('row', $row);
         }
     };
