@@ -1,0 +1,77 @@
+<?php
+/**
+ * @var \Application\ContactUs\Row $row
+ */
+?>
+<script>
+    require(['contact-us/generate.captcha']);
+</script>
+<div class="row" xmlns="http://www.w3.org/1999/html">
+    <h3>Contact us</h3>
+    <div class="col-lg-8">
+        <?php if ($user != null) { ?>
+            <form class="form-horizontal ajax" method="post" action="<?=$this->url('contact-us', 'add-message')?>" enctype="application/x-www-form-urlencoded">
+                <div class="form-group">
+                    <label for="subject" class="control-label col-lg-2"><?=__('Subject')?>:<sup class="text-danger">*</sup></label>
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control" id="subject" name="subject" required/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="content" class="control-label col-lg-2"><?=__('Message')?>:<sup class="text-danger">*</sup></label>
+                    <div class="col-lg-6">
+                        <textarea rows="5" cols="10" id="content" class="form-control redactor" name="message" required ></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"><?=__('Save')?></button>
+                </div>
+            </form>
+        <?php } else { ?>
+            <form class="form-horizontal ajax" method="post" action="<?=$this->url('contact-us', 'add-message')?>" enctype="application/x-www-form-urlencoded">
+                <div class="form-group">
+                    <label for="name" class="control-label col-lg-2"><?=__('Name')?>:<sup class="text-danger">*</sup></label>
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control" id="name" name="name" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="control-label col-lg-2"><?=__('Email')?>:<sup class="text-danger">*</sup></label>
+                    <div class="col-lg-6">
+                        <input type="email" class="form-control" id="email" name="email"  required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject" class="control-label col-lg-2"><?=__('Subject')?>:<sup class="text-danger">*</sup></label>
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control" id="subject" name="subject" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="content" class="control-label col-lg-2"><?=__('Message')?>:<sup class="text-danger">*</sup></label>
+                    <div class="col-lg-6">
+                        <textarea rows="12" cols="26" id="content" class="form-control redactor" name="message" required ></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="captcha" class="control-label col-lg-2">Type the characters:<sup class="text-danger">*</sup></label>
+                    <div class="col-lg-6">
+                        <span class="captcha"><?=$captcha?></span>
+                        <input type="text" class="form-control" id="captcha" name="captcha" required />
+                        <a class="generateCaptcha" href="<?=$this->url('contact-us', 'add-message')?>">Generate new characters</a>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"><?=__('Save')?></button>
+                </div>
+            </form>
+        <?php } ?>
+    </div>
+</div>
