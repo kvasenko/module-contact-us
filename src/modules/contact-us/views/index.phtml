@@ -11,7 +11,7 @@ $this->headStyle($this->baseUrl('css/contact-us/style.css'));
     <h3>Contact us</h3>
     <div class="col-lg-8">
         <?php if ($user != null) { ?>
-            <form class="form-horizontal ajax" method="post" action="<?=$this->url('contact-us', 'add-message')?>" enctype="application/x-www-form-urlencoded">
+            <form class="form-horizontal ajax" method="post" action="<?=$this->url('contact-us', 'index')?>" enctype="application/x-www-form-urlencoded">
                 <div class="form-group">
                     <label for="subject" class="control-label col-lg-2"><?=__('Subject')?>:<sup class="text-danger">*</sup></label>
                     <div class="col-lg-6">
@@ -31,7 +31,7 @@ $this->headStyle($this->baseUrl('css/contact-us/style.css'));
                 </div>
             </form>
         <?php } else { ?>
-            <form class="form-horizontal ajax" method="post" action="<?=$this->url('contact-us', 'add-message')?>" enctype="application/x-www-form-urlencoded">
+            <form class="form-horizontal ajax" method="post" action="<?=$this->url('contact-us', 'index')?>" enctype="application/x-www-form-urlencoded">
                 <div class="form-group">
                     <label for="name" class="control-label col-lg-2"><?=__('Name')?>:<sup class="text-danger">*</sup></label>
                     <div class="col-lg-6">
@@ -65,7 +65,7 @@ $this->headStyle($this->baseUrl('css/contact-us/style.css'));
                     <div class="col-lg-6">
                         <span class="captcha"><?=$captcha?></span>
                         <input type="text" class="form-control" id="captcha" name="captcha" required />
-                        <a class="generateCaptcha" href="<?=$this->url('contact-us', 'add-message')?>">Generate new characters</a>
+                        <a class="generateCaptcha" href="<?=$this->url('contact-us', 'index')?>">Generate new characters</a>
                     </div>
                 </div>
 
